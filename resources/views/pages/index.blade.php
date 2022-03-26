@@ -55,9 +55,9 @@
                         Obtain Access Token
                       </div>
                       <div class="card-body">
-                        <h5 class="card-title">Special title treatment</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Request Access Token</a>
+                        <h5 class="card-title">Access Token</h5>
+                        <p class="card-text" id="access_token"></p>
+                        <a href="#" id="getAccessToken" class="btn btn-primary">Request Access Token</a>
                       </div>
                 </div>
 
@@ -98,5 +98,21 @@
             </div>
           </div>
     </div>
+
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script>
+       document.getElementById('getAccessToken').addEventListener('click',(event)=>{
+           event.preventDefault()
+
+           axios.post('/get-token',{})
+           .then((response)=>{
+               console.log(response.data);
+               document.getElementById('access_token').innerHTML=response.data.access_token;
+           })
+           .catch((error)=>{
+               console.log(error);
+           })
+       })
+    </script>
 </body>
 </html>

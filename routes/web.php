@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\payments\mpesa\MpesaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +21,5 @@ Route::get('/welcome', function () {
 Route::get('/',function (){
     return view('pages.index');
 });
+
+Route::post('/get-token',[MpesaController::class,'getAccessToken']);
